@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "75d311b3-cb9f-48c6-abd9-94965da7f02e",
+		"name": "GIT-1-Delete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE- single user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6530a68e-dffa-4291-a83c-6d5899f5ba58",
+						"exec": [
+							"// Status code has int like 200, or ...",
+							"pm.test(\"Validating the Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"//status code name has String, like OK",
+							"pm.test(\"validating the Status code name is 'No Content' \", function () {",
+							"    pm.response.to.have.status(\"No Content\");",
+							"});",
+							"",
+							"pm.test(\"Validating the Res Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

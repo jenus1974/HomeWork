@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "e390fa6f-4e06-47f0-bc42-d55a7772f524",
+		"name": "GIT-1-Post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST-Login successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "18883de0-9776-4e39-89e5-f12ce62e0e20",
+						"exec": [
+							"// Status code has int like 200, or ...",
+							"pm.test(\"Validating the Status code is intiger like 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//status code name has String, like OK",
+							"pm.test(\"validating the Status code name is -OK \", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Validating the Res Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

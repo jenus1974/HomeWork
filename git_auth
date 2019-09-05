@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "0ca51df9-56bf-4e6b-973e-d3d3f14eb15d",
+		"name": "GIT-1-Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET- Auth token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11a26b2f-8bb9-41bb-b791-3342b3a3cfcd",
+						"exec": [
+							"//Status code has int, like 200 numeric",
+							"pm.test(\"Validating the Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//status code name has String, like OK",
+							"pm.test(\"validating the Status code name is 'OK' \", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Validating the Res Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer foo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://httpbin.org/bearer",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"bearer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

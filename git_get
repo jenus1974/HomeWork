@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "d23815c1-3bf9-4c45-ac4d-0e5a25ea8bd0",
+		"name": "GIT-1-Get",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET- single user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebd6989f-ddfb-4a20-8909-adb51edb90d5",
+						"exec": [
+							"// Status code has int like 200, or ...",
+							"pm.test(\"Validating the Status code is intiger like 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//status code name has String, like OK",
+							"pm.test(\"validating the Status code name is -OK \", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Validating the Res Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"data\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
